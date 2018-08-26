@@ -1,8 +1,7 @@
 # Java 2018
   My 4 Java projects done in the summer of 2018. This is the beginning of my practice of programming with Java.
 I'll continue to learn more with Java and frankly, it's working out quite fine. I am new to Github, and I'm still learning how Github
-works. However, I am maleable and I'm open to new ideas and suggestions about my work habits. 
-
+works.
 ## Getting Started
 ### What's Inside?
 1. A Fibonacci Sequencer with user input 
