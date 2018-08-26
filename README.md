@@ -14,6 +14,12 @@ works. However, I am maleable and I'm open to new ideas and suggestions about my
 The programs are lean on requirements. All you need is Java with most of its classes and methods.
 Go to the [Oracle website](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and follow the instructions to install java. 
 
+### Installation
+Install by either downloading the zip file or by using git clone:
+```
+git clone https://github.com/Shaedil/Java2018.git
+```
+
 ## Running the programs
 Because I use javac & Vim instead of any qualified IDE, you're going to have to run command prompt/terminal and run:
 ```
