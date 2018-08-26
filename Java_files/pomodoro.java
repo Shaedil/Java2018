@@ -25,7 +25,7 @@ class pomodoro{
     public static void initiateInput() {
 
         Scanner in = new Scanner(System.in);
-        System.out.print("Choose: 'shortbreak/short', 'longbreak/long' 'pomodoro/pomo': ");
+        System.out.print("Choose: 'shortbreak/short', 'longbreak/long', 'pomodoro/pomo' or 'exit': ");
 
         String option = in.nextLine();
         System.out.println("You typed: " + option);
@@ -67,8 +67,15 @@ class pomodoro{
             activateTimer(counter);
         }
         else {
+            exitOption(option);
+        }
+    public static void exitOption(String option) {
+        if (option.equals("exit") || option.equals("quit") {
+            System.flush(0);
+        }
+        else {
             System.out.println("That isn't an option!");
         }
-
+    }
     } // Ends userChoice method
 } //Ends pomodoro class
