@@ -40,9 +40,5 @@ programming.
 Sorry about that, the files in the Master branch are untouched ever since I created them. Whenever I learn new ways to make code shorter,
 more effecient and easier to read, I'll start to create updated versions in a new branch called "Updated."
 
-## Contributing
-I do not accept contributions on my personal projects, such as this one.
-I will however have certain projects where contributions are allowed.
-
 ## License
 This project is licensed under the GNU General Public License v2.0 - see the [LICENSE.md](LICENSE.md) file for details.
