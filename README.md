@@ -38,7 +38,7 @@ programming.
 
 ### This is... okay.
 Sorry about that, the files in the Master branch are untouched ever since I created them. Whenever I learn new ways to make code shorter,
-more effecient and easier to read, I'll start to create updated versions in a new branch called "Updated."
+more effecient and easier to read, I'll start to create updated versions in a new branch called "Updated." Also, all of the java files are displayed in your command prompt/terminal.
 
 ## License
 This project is licensed under the GNU General Public License v2.0 - see the [LICENSE.md](LICENSE.md) file for details.
