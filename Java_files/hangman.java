@@ -34,10 +34,7 @@ public class hangman {
     public static void printInfo(String word) {
         
         System.out.println("                .===============+Hangman+==============.");
-        System.out.println("                | You have 8 guesses to guess the word |");
-        System.out.println("                | The word is " + word.length() + " characters long.       |");
-        System.out.println("                |Instances begin on 0 = first letter of|");
-        System.out.println("                |   word & 1 = second letter of word   |");
+        System.out.println("                | You have 20 guesses to guess the word|");
         System.out.println("                |                                      |");
         System.out.println("                |======================================|");
         System.out.println("                |Guess the word before you run out of  |");
@@ -58,60 +55,65 @@ public class hangman {
     }
     
     public static void startGame(String word) {
-        //Create the blank spaces for each letter
-        for (int i = 0; i < word.length(); i++) {
-            System.out.print("_ " );
-        }
-        //DEBUG PLEASE REMOVE AFTER YOU'RE DONE THANK YOU!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        System.out.println(word);
-        
+        //Initialize variables here
         char[] wordArray = word.toCharArray();
         char[] revealArray = new char[wordArray.length];
-        System.out.println(revealArray.length); //should print out a number
-       
+        int point = 0;
+        char letter;
+        boolean addLetter = true;
+
+        System.out.print("                        ");
         for (int i = 0; i < word.length(); i++) {
-            revealArray[i] = '*';
+            revealArray[i] = '_';
+            System.out.print(revealArray[i] + "   ");
         }
+        System.out.println("\n\n");
+        
         //Game mechanics
         for (int j = 20; j >= 0; j--) {
             //Retriever and Check
+            if (point >= 1) {
+                addLetter = true;
+                System.out.print("                        ");
+                for (int a = 0; a < word.length(); a++) {
+                    System.out.print(revealArray[a] + " ");
+                }
+                System.out.println("\n");
+            }
             String guessWord = getWord();
             if (guessWord.equals(word)) {
-                endGame(word, guessWord);
                 break;
             }
 
-            char letter = getLetter();
-            int point = checkIfLetterIsCorrect(letter, word);
-            if (point >= 1) {
-                boolean addLetter = true;
-                for (int a = 0; a < word.length(); a++) {
-                    System.out.print(revealArray[a]);
-                }
-                System.out.println();
-                for (int index = 0; index < word.length(); index++){
-                    if (addLetter == true) {
-                        if (wordArray[index] == letter) {
-                            revealArray[index] = letter; //Replaces * with letter
-                        }
+            letter = getLetter();
+            point = checkIfLetterIsCorrect(letter, word);
+            for (int index = 0; index < word.length(); index++){
+                if (addLetter == true) {
+                    if (wordArray[index] == letter) {
+                        revealArray[index] = letter; //Replaces _ with letter
                     }
                 }
-                score += point;
-            }   
+            }
             guess++;
             //Print current game info
-            System.out.println("# of Guesses: " + guess);
-            System.out.println("Score: " + score);
-
-            for (int l = -1; (l = word.indexOf(letter, l + 1)) != -1; l++) {
-                System.out.println("The letter " + letter + " is in the word! ");
+            System.out.println("                        # of Guesses: " + guess);
+            if (guess > 20) {
+                break;
             }
+            for (int l = 0; l < word.length(); l++) {
+                if (letter == wordArray[l]) {
+                    System.out.println("                        The letter " + letter + " is in the word!");
+                }
+            }
+            System.out.println();
 
         } //end master for loop
+
+        endGame(word);
     } //end startGame method
     public static char getLetter() {
         
-        System.out.print("Guess a letter: ");
+        System.out.print("                        Guess a letter: ");
         String input = scanner.nextLine();
         input = input.toUpperCase(); //to turn all letters to uppercase so that it is easy to match letter to letter.
         return input.charAt(0); //returns the first letter of the input like an array.
@@ -119,7 +121,7 @@ public class hangman {
     public static String getWord() {
     
         Scanner in = new Scanner(System.in);
-        System.out.print("Guess the word: ");
+        System.out.print("                        Guess the word: ");
         String input = in.nextLine();
         input = input.toUpperCase();
         return input;
@@ -127,37 +129,39 @@ public class hangman {
     public static int checkIfLetterIsCorrect(char letter, String word) {
     // Goes through each of the letters in the word and checks if it matches with the guess letter.
         for (int l = -1; (l = word.indexOf(letter, l + 1)) != -1; l++) {
+            
             score++;
         }
         return score;
     }
-    public static void endGame(String word, String guessWord) {
+    public static void endGame(String word) {
         
-        if (score >= word.length() || guessWord.equals(word)) {
+        if (guess <= 20) {
             if (guess <= 10) {
                 try {
-                    System.out.println("You won? Wow, that was fast! You deserve a trophy!");
+                    System.out.println("            You won! That was fast! You deserve a trophy!");
                     Thread.sleep(1000);
-                    System.out.println("   ._________.");
-                    System.out.println(" __[m        ]__");
-                    System.out.println("(  (m        )  )");
-                    System.out.println(" `-_(m      )_- \u0301");
-                    System.out.println("     (m    )    ");
-                    System.out.println("    ,-(m  )-、  ");
-                    System.out.println("   /Congrats!\\  ");
-                    System.out.println("  /___________\\ ");
+                    System.out.println("                           ._________.");
+                    System.out.println("                         __[m        ]__");
+                    System.out.println("                        (  (m        )  )");
+                    System.out.println("                         `-_(m      )_- \u0301");
+                    System.out.println("                             (m    )    ");
+                    System.out.println("                            ,-(m  )-、  ");
+                    System.out.println("                           /Congrats!\\  ");
+                    System.out.println("                          /___________\\ ");
                 }
                 catch (InterruptedException ex) {Thread.currentThread().interrupt();}
             }
             else {
                 System.out.println("You won! Nice job!");
+                System.out.println("                           The word was " + word); 
+                System.out.flush();
             }
         }
         else {
-            System.out.println("You lost!");
-            System.out.println("The word was " + word + ". Good try!");
+            System.out.println("                        You lost!");
+            System.out.println("                        The word was " + word);
+            System.out.flush();
         }
-        System.out.println("The word was " + word); 
-        System.out.flush();
     }
 } //Ends class hangman
