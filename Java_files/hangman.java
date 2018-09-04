@@ -34,8 +34,8 @@ public class hangman {
     public static void printInfo(String word) {
         
         System.out.println("                .===============+Hangman+==============.");
-        System.out.println("                |You have 20 guesses to guess the word |");
-        System.out.println("                |The word is " + word.length() + " characters long.        |");
+        System.out.println("                | You have 8 guesses to guess the word |");
+        System.out.println("                | The word is " + word.length() + " characters long.       |");
         System.out.println("                |Instances begin on 0 = first letter of|");
         System.out.println("                |   word & 1 = second letter of word   |");
         System.out.println("                |                                      |");
@@ -68,10 +68,12 @@ public class hangman {
         char[] wordArray = word.toCharArray();
         char[] revealArray = new char[wordArray.length];
         System.out.println(revealArray.length); //should print out a number
-        int i;
        
+        for (int i = 0; i < word.length(); i++) {
+            revealArray[i] = '*';
+        }
         //Game mechanics
-        for (int j = 0; j < 20; j++) {
+        for (int j = 20; j >= 0; j--) {
             //Retriever and Check
             String guessWord = getWord();
             if (guessWord.equals(word)) {
@@ -81,112 +83,29 @@ public class hangman {
 
             char letter = getLetter();
             int point = checkIfLetterIsCorrect(letter, word);
-
-            for (i = 0; i >= revealArray.length; i++); { //  loop iterates through array word
-                switch (wordArray[i]) {
-                    case 1:
-                        if (wordArray[1] == letter) {
-                            revealArray[1] = letter;
-                            System.out.println(revealArray[1]);
+            if (point >= 1) {
+                boolean addLetter = true;
+                for (int a = 0; a < word.length(); a++) {
+                    System.out.print(revealArray[a]);
+                }
+                System.out.println();
+                for (int index = 0; index < word.length(); index++){
+                    if (addLetter == true) {
+                        if (wordArray[index] == letter) {
+                            revealArray[index] = letter; //Replaces * with letter
                         }
-                        else {
-                            revealArray[1] = '-';
-                            System.out.println(revealArray[1]);
-                        }
-                    case 2:
-                        if (wordArray[2] == letter) {
-                            revealArray[2] = letter;
-                            System.out.print(revealArray[2]);
-                        }
-                        else {
-                            revealArray[2] = '-';
-                            System.out.print(revealArray[2]);
-                        }
-                    case 3:
-                        if (wordArray[3] == letter) {
-                            revealArray[3] = letter;
-                            System.out.print(revealArray[3]);
-                        }
-                        else {
-                            revealArray[3] = '-';
-                            System.out.print(revealArray[3]);
-                        }
-                    case 4:
-                        if (wordArray[4] == letter) {
-                            revealArray[4] = letter;
-                            System.out.print(revealArray[4]);
-                        }
-                        else {
-                            revealArray[4] = '-';
-                            System.out.print(revealArray[4]);
-                        }
-                    case 5:
-                        if (wordArray[5] == letter) {
-                            revealArray[5] = letter;
-                            System.out.print(revealArray[5]);
-                        }
-                        else {
-                            revealArray[5] = '-';
-                            System.out.print(revealArray[5]);
-                        }
-                    case 6:
-                        if (wordArray[6] == letter) {
-                            revealArray[6] = letter;
-                            System.out.print(revealArray[6]);
-                        }
-                        else {
-                            revealArray[6] = '-';
-                            System.out.print(revealArray[6]);
-                        }
-                    case 7:
-                        if (wordArray[7] == letter) {
-                            revealArray[7] = letter;
-                            System.out.print(revealArray[7]);
-                        }
-                        else {
-                            revealArray[7] = '-';
-                            System.out.print(revealArray[7]);
-                        }
-                    case 8:
-                        if (wordArray[8] == letter) {
-                            revealArray[8] = letter;
-                            System.out.print(revealArray[8]);
-                        }
-                        else {
-                            revealArray[8] = '-';
-                            System.out.print(revealArray[8]);
-                        }
-                    case 9:
-                        if (wordArray[9] == letter) {
-                            revealArray[9] = letter;
-                            System.out.print(revealArray[9]);
-                        }
-                        else {
-                            revealArray[9] = '-';
-                            System.out.print(revealArray[9]);
-                        }
-                    default:
-                            revealArray[i] = '-';
-                            System.out.print(revealArray[i]);
-                } //end switch case 
-            } //end switch case's loop
-           
-            //Score & guess.
-            if (point == 1) {
+                    }
+                }
                 score += point;
-            }
-               
+            }   
             guess++;
-
             //Print current game info
             System.out.println("# of Guesses: " + guess);
             System.out.println("Score: " + score);
 
             for (int l = -1; (l = word.indexOf(letter, l + 1)) != -1; l++) {
-                System.out.println("The instances of this letter are on letter # " + l);
+                System.out.println("The letter " + letter + " is in the word! ");
             }
-
-            System.out.println("-------------------------------");
 
         } //end master for loop
     } //end startGame method
@@ -206,7 +125,7 @@ public class hangman {
         return input;
     }
     public static int checkIfLetterIsCorrect(char letter, String word) {
-    
+    // Goes through each of the letters in the word and checks if it matches with the guess letter.
         for (int l = -1; (l = word.indexOf(letter, l + 1)) != -1; l++) {
             score++;
         }
