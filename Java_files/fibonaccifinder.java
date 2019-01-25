@@ -24,7 +24,7 @@ class fibonaccifinder {
         Scanner Scanner = new Scanner(System.in);
         System.out.print("Choose an nth number of the Fibonacci sequence: ");
         int count = Scanner.nextInt(); 
-        System.out.printf("%f = %s\n")
+        System.out.printf("%f = %s\n");
         exceptionFilter(count); 
 
     }

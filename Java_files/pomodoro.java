@@ -69,13 +69,13 @@ class pomodoro{
         else {
             exitOption(option);
         }
+    }
     public static void exitOption(String option) {
-        if (option.equals("exit") || option.equals("quit") {
-            System.flush(0);
+        if (option.equals("exit") || option.equals("quit")) {
+            System.out.flush();
         }
         else {
             System.out.println("That isn't an option!");
         }
-    }
     } // Ends userChoice method
 } //Ends pomodoro class

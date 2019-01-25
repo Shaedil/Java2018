@@ -146,7 +146,7 @@ public class hangman {
                     System.out.println("                        (  (m        )  )");
                     System.out.println("                         `-_(m      )_- \u0301");
                     System.out.println("                             (m    )    ");
-                    System.out.println("                            ,-(m  )-、  ");
+                    System.out.println("                            ,-(m  )- \u1252  ");
                     System.out.println("                           /Congrats!\\  ");
                     System.out.println("                          /___________\\ ");
                 }
