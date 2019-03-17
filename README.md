@@ -42,4 +42,4 @@ Sorry about that, the files in the Master branch are untouched ever since I crea
 more effecient and easier to read, I'll start to create updated versions in a new branch called "Updated." Also, all of the java files are displayed in your command prompt/terminal.
 
 ## License
-This project is licensed under the GNU General Public License v2.0 - see the [LICENSE.md](LICENSE.md) file for details.
+This project is not licensed, which states that no one can distribute, copy, or modify this work.
